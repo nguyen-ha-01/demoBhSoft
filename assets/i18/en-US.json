@@ -1,0 +1,13 @@
+{
+  "home": {
+    "lb1": "What do you want to do today?",
+    "lb2": "Tap + to add your tasks"
+
+  },
+  "nav": {
+    "p1": "Index",
+    "p2": "Calender",
+    "p3": "Focus",
+    "p4": "Profile"
+  }
+}

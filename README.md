@@ -4,13 +4,20 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+## Generate assets
 
-A few resources to get you started if this is your first Flutter project:
+- fluttergen -c pubspec.yaml
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Commit Convention
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+We follow a commit convention for better organization and clarity in version control. Each commit message should begin
+with a type, followed by a colon and a space, then a concise description of the changes. Here are the types we use:
+
+- `<type>: <description>`
+- `feat`: for new features
+- `chore`: for maintenance tasks or miscellaneous changes
+- `refactor`: for code refactoring
+- `fix`: for bug fixes
+- `build`: for build-related changes
+- `base`: for setting up base project or initial configurations
+
