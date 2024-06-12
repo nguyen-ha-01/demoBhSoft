@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "138702265774",
+    "project_id": "tiademo-7c4fb",
+    "storage_bucket": "tiademo-7c4fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138702265774:android:8b8b9a386ca41d681c7c3f",
+        "android_client_info": {
+          "package_name": "com.hanxbhsoft.tiademo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138702265774-mhd56b0epb447p8qbibk1cb20vm6tg8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmy6DZbkfsr24PsYo1Q61oYy1RZH5sOkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138702265774-mhd56b0epb447p8qbibk1cb20vm6tg8s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
