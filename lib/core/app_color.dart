@@ -12,4 +12,8 @@ class AppColor {
   static const Color secondary = Color.fromARGB(221, 0, 0, 0);
   static const Color dialog_background = Color(0xff363636);
   static const Color transparent = Color.fromARGB(0, 0, 0, 0);
+  static const Color flagDismiss = Color(0xff272727);
+  static const Color border = Color(0xff979797);
+  static const Color date = Color(0xffff4949);
+  static const Color green = Color(0xff80FFD1);
 }

@@ -27,17 +27,17 @@ class _CompletedTaskItemState extends State<CompletedTaskItem> {
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      opacity: (widget.task.state == false) ? 1 : 0,
+      opacity: (widget.task.state != false) ? 1 : 0,
       duration: const Duration(milliseconds: 250),
       child: GestureDetector(
         onTap: widget.onTap(widget.task, widget.category),
         onHorizontalDragUpdate: (detail) {
           setState(() {
             _dragPosition += detail.delta.dx;
-            if (_dragPosition < 10) {
+            if (_dragPosition < 0) {
               willShowDeleteBtn = true;
             }
-            if (_dragPosition > 10) {
+            if (_dragPosition > 15) {
               willShowDeleteBtn = false;
             }
           });
@@ -48,14 +48,17 @@ class _CompletedTaskItemState extends State<CompletedTaskItem> {
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Radio<bool>(
-                value: !widget.task.state,
-                groupValue: widget.task.state,
-                onChanged: (value) {},
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+                child: Radio<bool>(
+                  value: !widget.task.state,
+                  groupValue: widget.task.state,
+                  onChanged: (value) {},
+                ),
               ),
-              const SizedBox(
-                width: 12,
-              ),
+              // const SizedBox(
+              //   width: 12,
+              // ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
@@ -86,20 +89,26 @@ class _CompletedTaskItemState extends State<CompletedTaskItem> {
                   ),
                 ),
               ),
-              AnimatedSize(
-                duration: const Duration(milliseconds: 250),
-                curve: Curves.easeInOut,
-                child: GestureDetector(
-                  onTap: widget.onDelete(widget.task),
+              GestureDetector(
+                onTap: widget.onDelete(widget.task),
+                child: AnimatedSize(
+                  duration: const Duration(milliseconds: 250),
+                  curve: Curves.easeInOut,
                   child: Container(
+                    decoration: BoxDecoration(
+                        color: Color(0xffc2c1c1).withOpacity(willShowDeleteBtn ? 1 : 0),
+                        borderRadius:
+                            const BorderRadius.only(topRight: Radius.circular(4), bottomRight: Radius.circular(4))),
                     width: (willShowDeleteBtn) ? showWidth : 0,
                     height: double.infinity,
-                    color: const Color(0xffc2c1c1),
-                    child: SvgPicture.asset(
-                      Assets.icon.icCommonTrash,
-                      fit: BoxFit.contain,
-                      width: 32,
-                      height: 32,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SvgPicture.asset(
+                        Assets.icon.icCommonTrash,
+                        fit: BoxFit.scaleDown,
+                        width: 32,
+                        height: 32,
+                      ),
                     ),
                   ),
                 ),

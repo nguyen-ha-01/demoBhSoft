@@ -1,3 +1,5 @@
+const String EMPTY_TAG = "EMPTY";
+
 class Category {
   String id;
   String name;
@@ -24,6 +26,8 @@ class Category {
       'iconId': iconId,
     };
   }
+
+  factory Category.empty() => Category(id: EMPTY_TAG, name: EMPTY_TAG, colorId: 0xff000000, iconId: EMPTY_TAG);
 
   // Method to create Category from Map
   factory Category.fromMap(Map<String, dynamic> map) {

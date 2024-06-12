@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tiademo/core/app_textstyle.dart';
-import 'package:tiademo/states/nav.dart';
+import 'package:tiademo/states/cubit/nav.dart';
 
 import '../../gen/assets.gen.dart';
 

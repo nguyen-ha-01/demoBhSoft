@@ -1,13 +1,99 @@
 {
   "home": {
     "lb1": "What do you want to do today?",
-    "lb2": "Tap + to add your tasks"
-
+    "lb2": "Tap + to add your tasks",
+    "l3": "Add Task",
+    "t1": "Title",
+    "t2": "Description"
   },
   "nav": {
     "p1": "Index",
     "p2": "Calender",
     "p3": "Focus",
     "p4": "Profile"
+  },
+  "category": {
+    "h1": "Create new category",
+    "l1": "Category name: ",
+    "l2": "Category icon: ",
+    "l3": "Category color: ",
+    "b1": "Cancel",
+    "b2": "Create Category",
+    "l4": "Category name",
+    "l5": "Choose icon from library"
+  },
+  "detail": {
+    "l1": "Task Time: ",
+    "l2": "Task Category: ",
+    "l3": "Task Priority: ",
+    "l4": "Sub-Task",
+    "default": "default",
+    "l5": "Add Sub-Task",
+    "l6": "Delete Task",
+    "l7": "Finish"
+  },
+  "index": {
+    "h1": "Index",
+    "l1": "Today",
+    "l2": "Completed",
+    "t1": "Search for your task",
+    "b1": "Today",
+    "b2": "Week",
+    "b3": "Month",
+    "b4": "Year"
+  },
+  "commons": {
+    "l1": "Task priority",
+    "l2": "Cancel",
+    "l3": "Save",
+    "l4": "Choose Category",
+    "l5": "Add Category",
+    "l6": "Create New",
+    "h1": "UpTodo"
+  },
+  "login": {
+    "l1": "Manage your tasks",
+    "l2": "You can easily manage all of your daily tasks in DoMe for free",
+    "l3": "Create daily routine",
+    "l4": "In Uptodo  you can create your personalized routine to stay productive",
+    "l5": "Orgonaize your tasks",
+    "l6": "You can organize your daily tasks by adding your tasks into separate categories",
+    "l7": "Welcome to UpTodo",
+    "l8": "Please login to your account or create new account to continue",
+    "b1": "BACK",
+    "b2": "NEXT",
+    "b3": "GET START",
+    "b4": "LOGIN",
+    "b5": "CREATE ACCOUNT"
+  },
+  "register": {
+    "l1": "Register",
+    "l2": "Username",
+    "h1": "Enter your Username",
+    "l3": "Password",
+    "h2": "******",
+    "l4": "Confirm Password",
+    "l5": "or",
+    "l6": "Register with Google",
+    "l7": "Register with Apple",
+    "l8": "Already have an account?",
+    "l9": "Login"
+  },
+  "signin": {
+    "l1": "Login",
+    "l2": "Username",
+    "h1": "Enter your Username",
+    "l3": "Password",
+    "h2": "******",
+    "l5": "or",
+    "l6": "Login with Google",
+    "l7": "Login with Apple",
+    "l8": "Don't have an account?",
+    "l9": "Register"
+  },
+  "picker": {
+    "b1": "Cancel",
+    "b2": "Choose Time",
+    "b3": "Save"
   }
 }

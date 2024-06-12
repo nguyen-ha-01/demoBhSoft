@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tiademo/common/widget/bottom_nav_item.dart';
 import 'package:tiademo/core/app_color.dart';
 import 'package:tiademo/gen/assets.gen.dart';
-import 'package:tiademo/states/nav.dart';
+import 'package:tiademo/states/cubit/nav.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});

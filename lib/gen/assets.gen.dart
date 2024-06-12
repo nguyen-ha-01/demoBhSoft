@@ -28,6 +28,9 @@ class $AssetsIconGen {
   /// File path: assets/icon/holder.svg
   String get holder => 'assets/icon/holder.svg';
 
+  /// File path: assets/icon/ic_app.svg
+  String get icApp => 'assets/icon/ic_app.svg';
+
   /// File path: assets/icon/ic_app_bar_1.svg
   String get icAppBar1 => 'assets/icon/ic_app_bar_1.svg';
 
@@ -55,8 +58,20 @@ class $AssetsIconGen {
   /// File path: assets/icon/ic_cate_work.svg
   String get icCateWork => 'assets/icon/ic_cate_work.svg';
 
+  /// File path: assets/icon/ic_common_add.svg
+  String get icCommonAdd => 'assets/icon/ic_common_add.svg';
+
+  /// File path: assets/icon/ic_common_apple.svg
+  String get icCommonApple => 'assets/icon/ic_common_apple.svg';
+
+  /// File path: assets/icon/ic_common_google.svg
+  String get icCommonGoogle => 'assets/icon/ic_common_google.svg';
+
   /// File path: assets/icon/ic_common_trash.svg
   String get icCommonTrash => 'assets/icon/ic_common_trash.svg';
+
+  /// File path: assets/icon/ic_commons_arrow.svg
+  String get icCommonsArrow => 'assets/icon/ic_commons_arrow.svg';
 
   /// File path: assets/icon/ic_home_1.svg
   String get icHome1 => 'assets/icon/ic_home_1.svg';
@@ -97,6 +112,24 @@ class $AssetsIconGen {
   /// File path: assets/icon/ic_home_sheet_timer.svg
   String get icHomeSheetTimer => 'assets/icon/ic_home_sheet_timer.svg';
 
+  /// File path: assets/icon/ic_index_search.svg
+  String get icIndexSearch => 'assets/icon/ic_index_search.svg';
+
+  /// File path: assets/icon/ic_intro_1.svg
+  String get icIntro1 => 'assets/icon/ic_intro_1.svg';
+
+  /// File path: assets/icon/ic_intro_2.svg
+  String get icIntro2 => 'assets/icon/ic_intro_2.svg';
+
+  /// File path: assets/icon/ic_intro_3.svg
+  String get icIntro3 => 'assets/icon/ic_intro_3.svg';
+
+  /// File path: assets/icon/ic_picker_dotdot.svg
+  String get icPickerDotdot => 'assets/icon/ic_picker_dotdot.svg';
+
+  /// File path: assets/icon/ic_register_arr_back.svg
+  String get icRegisterArrBack => 'assets/icon/ic_register_arr_back.svg';
+
   /// File path: assets/icon/icon_cate_movie.svg
   String get iconCateMovie => 'assets/icon/icon_cate_movie.svg';
 
@@ -109,6 +142,7 @@ class $AssetsIconGen {
   /// List of all assets
   List<dynamic> get values => [
         holder,
+        icApp,
         icAppBar1,
         icCateDesign,
         icCateGrocery,
@@ -118,7 +152,11 @@ class $AssetsIconGen {
         icCateSport,
         icCateUniver,
         icCateWork,
+        icCommonAdd,
+        icCommonApple,
+        icCommonGoogle,
         icCommonTrash,
+        icCommonsArrow,
         icHome1,
         icHomeNav1,
         icHomeNav1Se,
@@ -132,6 +170,12 @@ class $AssetsIconGen {
         icHomeSheetFlag,
         icHomeSheetTag,
         icHomeSheetTimer,
+        icIndexSearch,
+        icIntro1,
+        icIntro2,
+        icIntro3,
+        icPickerDotdot,
+        icRegisterArrBack,
         iconCateMovie,
         iconHomeSheetSend,
         img

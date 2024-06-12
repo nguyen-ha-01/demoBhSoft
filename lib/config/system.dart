@@ -5,5 +5,5 @@ class System {
     Locale('en', 'US'),
     Locale('vi', 'VI'),
   ];
-  static Locale mainLocale = Locale('vi', 'VI');
+  static Locale mainLocale = Locale('en', 'US');
 }
