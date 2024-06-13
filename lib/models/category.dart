@@ -39,6 +39,7 @@ class Category {
       iconId: map['iconId'],
     );
   }
+  Category copy() => Category(id: id, name: name, colorId: colorId, iconId: iconId);
 
   // Method to display category details
   @override

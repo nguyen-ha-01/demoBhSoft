@@ -103,114 +103,17 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Row(
                   children: [
-                    GestureDetector(
-                      onTap: () async {
-                        //todo: time pick btn in add task
-                        var date = await showCustomDatePicker(
-                            context: context,
-                            firstDate: DateTime(2024),
-                            lastDate: DateTime(2050),
-                            cancelLabel: tr('picker.b1'),
-                            submitLabel: tr('picker.b2'));
-                        if (date != null) {
-                          print("date picked is ${date.toString()}");
-                          controller.setDate(date);
-                          // var time = await showTimePicker(context: context, initialTime: TimeOfDay.now());
-                          var hourPicker = HourPicker(
-                            handleCancel: () {
-                              Navigator.pop(context);
-                            },
-                            handleOk: (h, m, ap) {
-                              TimeOfDay t = TimeOfDay(hour: (ap == 'am') ? h : h + 12, minute: m);
-                              Navigator.pop(context, t);
-                            },
-                          );
-                          var time = await showDialog(context: context, builder: (c) => hourPicker);
-
-                          if (time != null && time is TimeOfDay) {
-                            print("time picked is ${time.toString()}");
-                            controller.setTime(time);
-                          }
-                        }
-                      },
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: SvgPicture.asset(
-                          Assets.icon.icHomeSheetTimer,
-                          width: 24,
-                          height: 24,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
+                    timePick(),
                     const SizedBox(
                       width: 14,
                     ),
-                    GestureDetector(
-                      onTap: () async {
-                        //todo: add tag in sheet
-                        await showDialog(
-                            context: context,
-                            barrierDismissible: false,
-                            builder: (c) => Obx(() => categorySelectedPage(context, controller.getCategories(),
-                                (p) => controller.selectCategory(p), () => {controller.saveCategory()})));
-                      },
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: SvgPicture.asset(
-                          Assets.icon.icHomeSheetTag,
-                          width: 24,
-                          height: 24,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
+                    categoryPick(),
                     const SizedBox(
                       width: 14,
                     ),
-                    GestureDetector(
-                      onTap: () async {
-                        await showDialog(
-                            context: context,
-                            builder: (ctx) {
-                              controller.selectedPriority.value = controller.priority.value;
-                              return Obx(() => prioritySelectPage(context, (e) => controller.selectPriority(e),
-                                  controller.selectedPriority.value, () => controller.setPriority()));
-                            });
-                      },
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: SvgPicture.asset(
-                          Assets.icon.icHomeSheetFlag,
-                          width: 24,
-                          height: 24,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
+                    priorityPick(),
                     const Spacer(),
-                    GestureDetector(
-                      onTap: () async {
-                        //todo: icon sheet Send
-                        var isAdded = await controller.addTask();
-                        if (isAdded) {
-                          Navigator.pop(context, true);
-                        }
-                      },
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: SvgPicture.asset(
-                          Assets.icon.iconHomeSheetSend,
-                          width: 24,
-                          height: 24,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
+                    addTaskBtn(),
                   ],
                 ),
               )
@@ -221,4 +124,113 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  Widget timePick() => Builder(builder: (context) {
+        return GestureDetector(
+          onTap: () async {
+            //todo: time pick btn in add task
+            var date = await showCustomDatePicker(
+                context: context,
+                firstDate: DateTime(2024),
+                lastDate: DateTime(2050),
+                cancelLabel: tr('picker.b1'),
+                submitLabel: tr('picker.b2'));
+            if (date != null) {
+              print("date picked is ${date.toString()}");
+              controller.setDate(date);
+              // var time = await showTimePicker(context: context, initialTime: TimeOfDay.now());
+              var hourPicker = HourPicker(
+                handleCancel: () {
+                  Navigator.pop(context);
+                },
+                handleOk: (h, m, ap) {
+                  TimeOfDay t = TimeOfDay(hour: (ap == 'am') ? h : h + 12, minute: m);
+                  Navigator.pop(context, t);
+                },
+              );
+              var time = await showDialog(context: context, builder: (c) => hourPicker);
+
+              if (time != null && time is TimeOfDay) {
+                print("time picked is ${time.toString()}");
+                controller.setTime(time);
+              }
+            }
+          },
+          child: SizedBox(
+            width: 40,
+            height: 40,
+            child: SvgPicture.asset(
+              Assets.icon.icHomeSheetTimer,
+              width: 24,
+              height: 24,
+              fit: BoxFit.fill,
+            ),
+          ),
+        );
+      });
+
+  Widget categoryPick() => GestureDetector(
+        onTap: () async {
+          //todo: add tag in sheet
+          await showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (c) => Obx(() => categorySelectedPage(context, controller.getCategories(),
+                  (p) => controller.selectCategory(p), () => {controller.saveCategory()})));
+        },
+        child: SizedBox(
+          width: 40,
+          height: 40,
+          child: SvgPicture.asset(
+            Assets.icon.icHomeSheetTag,
+            width: 24,
+            height: 24,
+            fit: BoxFit.fill,
+          ),
+        ),
+      );
+
+  Widget priorityPick() => Builder(builder: (context) {
+        return GestureDetector(
+          onTap: () async {
+            await showDialog(
+                context: context,
+                builder: (ctx) {
+                  controller.selectedPriority.value = controller.priority.value;
+                  return Obx(() => prioritySelectPage(context, (e) => controller.selectPriority(e),
+                      controller.selectedPriority.value, () => controller.setPriority()));
+                });
+          },
+          child: SizedBox(
+            width: 40,
+            height: 40,
+            child: SvgPicture.asset(
+              Assets.icon.icHomeSheetFlag,
+              width: 24,
+              height: 24,
+              fit: BoxFit.fill,
+            ),
+          ),
+        );
+      });
+
+  Widget addTaskBtn() => GestureDetector(
+        onTap: () async {
+          //todo: icon sheet Send
+          var isAdded = await controller.addTask();
+          if (isAdded) {
+            Navigator.pop(context, true);
+          }
+        },
+        child: SizedBox(
+          width: 40,
+          height: 40,
+          child: SvgPicture.asset(
+            Assets.icon.iconHomeSheetSend,
+            width: 24,
+            height: 24,
+            fit: BoxFit.fill,
+          ),
+        ),
+      );
 }

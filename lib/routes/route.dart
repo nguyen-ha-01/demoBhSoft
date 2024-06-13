@@ -19,14 +19,20 @@ class Routes {
     _cusPage(
         NamedRoutes.detail_task_page,
         () => Builder(builder: (c) {
-              final Map<String, dynamic> data = Get.parameters;
+              final Map<String, dynamic> data = Get.arguments;
+              if (data.isEmpty) {
+                print('get navigate to detail with empty map');
+              } else {
+                print('detail task map ${data.toString()}');
+              }
               try {
                 Task? t = data['task'];
                 Category? c = data['category'];
                 if (t != null && c != null) {
                   return DetailTaskPage(task: t, category: c);
                 } else {
-                  throw Exception("task and category was not passing");
+                  print("get navigate to detail but have no arg");
+                  return const ErrorPage();
                 }
               } on Exception catch (_, e) {
                 return const ErrorPage();

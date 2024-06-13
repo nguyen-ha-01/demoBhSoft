@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:tiademo/common/extend/p1.dart';
 import 'package:tiademo/common/widget/completed_task_item.dart';
 import 'package:tiademo/common/widget/text_input_item.dart';
@@ -8,23 +10,25 @@ import 'package:tiademo/core/app_color.dart';
 import 'package:tiademo/core/app_textstyle.dart';
 import 'package:tiademo/gen/assets.gen.dart';
 import 'package:tiademo/models/task.dart';
+import 'package:tiademo/states/state/base_state.dart';
+import 'package:tiademo/states/task_provider.dart';
+import 'package:tiademo/ui/home_page/widgets/blank_item.dart';
 import 'package:tiademo/ui/home_page/widgets/task_item.dart';
 
 class IndexPage extends StatefulWidget {
   const IndexPage({super.key});
 
   @override
-  _IndexPageState createState() => _IndexPageState();
+  IndexPageState createState() => IndexPageState();
 }
 
-class _IndexPageState extends State<IndexPage> {
-  _IndexPageState();
+class IndexPageState extends State<IndexPage> {
+  IndexPageState();
 
-  final List<Task> p1 = [getTask()];
-  final List<Task> p2 = [getFinishedTask(), getFinishedTask()];
   final TextEditingController searchController = TextEditingController();
   final List<String> _dropdownItems = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
   String? _selectedValue;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -32,13 +36,13 @@ class _IndexPageState extends State<IndexPage> {
     super.initState();
   }
 
+  String selectedFilter = "day";
+
   @override
   Widget build(BuildContext context) {
     return modeling(context);
   }
 
-  String selectedFilter = "day";
-  // modeling(p1, p2)
   Widget modeling(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
@@ -52,7 +56,9 @@ class _IndexPageState extends State<IndexPage> {
               return TextInputItem2(
                 hint: 'index.t1'.tr(),
                 onChange: () {
-                  print('search for ${searchController.text}---------------------------------');
+                  if (kDebugMode) {
+                    print('search for ${searchController.text}---------------------------------');
+                  }
                 },
                 controller: searchController,
                 prefix: GestureDetector(
@@ -83,34 +89,45 @@ class _IndexPageState extends State<IndexPage> {
             const SizedBox(
               height: 16,
             ),
-            ListView.separated(
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (c, position) {
-                if (position < p1.length) {
-                  return TaskItem(task: p1[position], category: getCategory(), onRadio: (v) {}, onTap: (t, c) {});
-                }
-                if (position == p1.length) {
-                  return completedTag();
-                }
-                if (position > p1.length) {
-                  return CompletedTaskItem(
-                    task: p2[position - p1.length - 1],
-                    category: getCategory(),
-                    onTap: (t, c) {},
-                    onDelete: (Task) {},
-                  );
-                }
-                return null;
-              },
-              separatorBuilder: (ctx, i) => const SizedBox(
-                height: 16,
-              ),
-              itemCount: p1.length + p2.length + 1,
-              shrinkWrap: true,
-            ),
+            Consumer<TaskProvider>(builder: (ctx, provider, _) {
+              if (provider.tasksState.status == Status.COMPLETED) {
+                var p2 = filterDoneTasks(provider.tasksState.data!);
+                var p1 = filterNotDoneTasks(provider.tasksState.data!);
+                return _listTaskItemLoadSuccess(p1, p2);
+              }
+              return const Center(child: BlankItem());
+            }),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _listTaskItemLoadSuccess(List<Task> notDone, List<Task> done) {
+    return ListView.separated(
+      physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (c, position) {
+        if (position < notDone.length) {
+          return TaskItem(task: notDone[position], category: getCategory(), onRadio: (v) {}, onTap: (t, category) {});
+        }
+        if (position == notDone.length) {
+          return completedTag();
+        }
+        if (position > notDone.length) {
+          return CompletedTaskItem(
+            task: done[position - notDone.length - 1],
+            category: getCategory(),
+            onTap: (t, c) {},
+            onDelete: (Task t) {},
+          );
+        }
+        return Container();
+      },
+      separatorBuilder: (ctx, i) => const SizedBox(
+        height: 16,
+      ),
+      itemCount: notDone.length + done.length + 1,
+      shrinkWrap: true,
     );
   }
 
@@ -139,6 +156,7 @@ class _IndexPageState extends State<IndexPage> {
       );
 
   void search() {}
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -170,32 +188,32 @@ class _IndexPageState extends State<IndexPage> {
         itemBuilder: (c) {
           return [
             PopupMenuItem(
+              value: 'day',
               child: Text(
                 "day",
                 style: AppTextStyle.type16,
               ),
-              value: 'day',
             ),
             PopupMenuItem(
+              value: 'week',
               child: Text(
                 "week",
                 style: AppTextStyle.type16,
               ),
-              value: 'week',
             ),
             PopupMenuItem(
+              value: 'month',
               child: Text(
                 "month",
                 style: AppTextStyle.type16,
               ),
-              value: 'month',
             ),
             PopupMenuItem(
+              value: 'year',
               child: Text(
                 "Year",
                 style: AppTextStyle.type16,
               ),
-              value: 'year',
             ),
           ];
         },

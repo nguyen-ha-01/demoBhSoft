@@ -73,6 +73,18 @@ class $AssetsIconGen {
   /// File path: assets/icon/ic_commons_arrow.svg
   String get icCommonsArrow => 'assets/icon/ic_commons_arrow.svg';
 
+  /// File path: assets/icon/ic_detail_edit.svg
+  String get icDetailEdit => 'assets/icon/ic_detail_edit.svg';
+
+  /// File path: assets/icon/ic_detail_exit.svg
+  String get icDetailExit => 'assets/icon/ic_detail_exit.svg';
+
+  /// File path: assets/icon/ic_detail_rollback.svg
+  String get icDetailRollback => 'assets/icon/ic_detail_rollback.svg';
+
+  /// File path: assets/icon/ic_detail_sub.svg
+  String get icDetailSub => 'assets/icon/ic_detail_sub.svg';
+
   /// File path: assets/icon/ic_home_1.svg
   String get icHome1 => 'assets/icon/ic_home_1.svg';
 
@@ -157,6 +169,10 @@ class $AssetsIconGen {
         icCommonGoogle,
         icCommonTrash,
         icCommonsArrow,
+        icDetailEdit,
+        icDetailExit,
+        icDetailRollback,
+        icDetailSub,
         icHome1,
         icHomeNav1,
         icHomeNav1Se,

@@ -18,7 +18,7 @@ class UserProvider extends ChangeNotifier {
     return UserProvider(repo: UserRepositoryImpl());
   }
   Future<bool> init() async {
-    _sharePreferenceManage.setupData();
+    await _sharePreferenceManage.setupData();
     var loggedUser = await _sharePreferenceManage.getUser();
     if (loggedUser != null) {
       authState = ApiResponse.completed(loggedUser);

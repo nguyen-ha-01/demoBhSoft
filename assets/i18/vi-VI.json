@@ -20,7 +20,8 @@
     "b1": "Cancel",
     "b2": "Create Category",
     "l4": "Category name",
-    "l5": "Choose icon from library"
+    "l5": "Choose icon from library",
+    "l6": "Choose icon"
   },
   "detail": {
     "l1": "Task Time: ",
@@ -30,7 +31,14 @@
     "default": "default",
     "l5": "Add Sub-Task",
     "l6": "Delete Task",
-    "l7": "Finish"
+    "l7": "Finish",
+    "l8": "Edit Task title",
+    "l9": "Cancel",
+    "l10": "Edit",
+    "l11": "Delete Task",
+    "l12": "Are you sure you want to delete this task?",
+    "l13": "Task title : ",
+    "l14": "Delete"
   },
   "index": {
     "h1": "Index",
@@ -95,5 +103,11 @@
     "b1": "Cancel",
     "b2": "Choose Time",
     "b3": "Save"
+  },
+  "priority": {
+    "l1": "low",
+    "l2": "default",
+    "l3": "high",
+    "l4": "important"
   }
 }

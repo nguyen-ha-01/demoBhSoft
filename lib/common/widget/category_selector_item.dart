@@ -38,9 +38,12 @@ class CategorySelectorItem extends StatelessWidget {
               ),
             ),
           ),
-          Text(
-            category.name,
-            style: AppTextStyle.type14,
+          Flexible(
+            child: Text(
+              category.name,
+              style: AppTextStyle.type14,
+              overflow: TextOverflow.ellipsis,
+            ),
           )
         ],
       ),

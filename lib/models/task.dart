@@ -27,6 +27,11 @@ class Task {
     };
   }
 
+  @override
+  String toString() {
+    return 'Task{id: $id, label: $label, description: ${description ?? 'N/A'}, time: $time, state: $state, categoryId: ${categoryId ?? 'N/A'}, priority: $priority}';
+  }
+
   factory Task.fromMap(Map<String, dynamic> map) {
     return Task(
       id: map['id'],
@@ -38,4 +43,22 @@ class Task {
       priority: map['priority'],
     );
   }
+  Task copy() {
+    return Task(
+        id: this.id,
+        label: this.label,
+        description: this.description,
+        time: this.time,
+        state: this.state,
+        categoryId: this.categoryId,
+        priority: this.priority);
+  }
+}
+
+List<Task> filterDoneTasks(List<Task> tasks) {
+  return tasks.takeWhile((value) => value.state == true).toList();
+}
+
+List<Task> filterNotDoneTasks(List<Task> tasks) {
+  return tasks.where((task) => task.state == false).toList();
 }
