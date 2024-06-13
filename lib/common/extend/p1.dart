@@ -16,6 +16,7 @@ Task getTask() => Task(
       categoryId: '1',
       priority: 2,
     );
+
 Task getFinishedTask() => Task(
       id: '1',
       label: 'Buy groceries',

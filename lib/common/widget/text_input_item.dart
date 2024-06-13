@@ -18,6 +18,7 @@ class TextInputItem extends StatelessWidget {
     this.prefix,
     this.isObscured,
   });
+
   final TextEditingController controller;
   final TextInputAction? action;
   final TextInputType? keyboard;
@@ -75,6 +76,7 @@ class TextInputItem2 extends StatelessWidget {
       required this.controller,
       this.prefix,
       required this.width});
+
   final double width;
   final TextEditingController controller;
   final TextInputAction? action;
