@@ -136,6 +136,33 @@ class $AssetsIconGen {
   /// File path: assets/icon/ic_intro_3.svg
   String get icIntro3 => 'assets/icon/ic_intro_3.svg';
 
+  /// File path: assets/icon/ic_p_about.svg
+  String get icPAbout => 'assets/icon/ic_p_about.svg';
+
+  /// File path: assets/icon/ic_p_arrow.svg
+  String get icPArrow => 'assets/icon/ic_p_arrow.svg';
+
+  /// File path: assets/icon/ic_p_change_image.svg
+  String get icPChangeImage => 'assets/icon/ic_p_change_image.svg';
+
+  /// File path: assets/icon/ic_p_fag.svg
+  String get icPFag => 'assets/icon/ic_p_fag.svg';
+
+  /// File path: assets/icon/ic_p_help.svg
+  String get icPHelp => 'assets/icon/ic_p_help.svg';
+
+  /// File path: assets/icon/ic_p_key.svg
+  String get icPKey => 'assets/icon/ic_p_key.svg';
+
+  /// File path: assets/icon/ic_p_logout.svg
+  String get icPLogout => 'assets/icon/ic_p_logout.svg';
+
+  /// File path: assets/icon/ic_p_setting.svg
+  String get icPSetting => 'assets/icon/ic_p_setting.svg';
+
+  /// File path: assets/icon/ic_p_support.svg
+  String get icPSupport => 'assets/icon/ic_p_support.svg';
+
   /// File path: assets/icon/ic_picker_dotdot.svg
   String get icPickerDotdot => 'assets/icon/ic_picker_dotdot.svg';
 
@@ -190,6 +217,15 @@ class $AssetsIconGen {
         icIntro1,
         icIntro2,
         icIntro3,
+        icPAbout,
+        icPArrow,
+        icPChangeImage,
+        icPFag,
+        icPHelp,
+        icPKey,
+        icPLogout,
+        icPSetting,
+        icPSupport,
         icPickerDotdot,
         icRegisterArrBack,
         iconCateMovie,

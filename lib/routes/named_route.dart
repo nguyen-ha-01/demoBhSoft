@@ -7,6 +7,6 @@ class NamedRoutes {
   static const String login_page = "/login_page";
   static const String signup_page = "/signup";
   static const String intro_page = "/intro";
-
+  static const String profile_page = "/profile";
   static const String p4 = "/intro/p4";
 }

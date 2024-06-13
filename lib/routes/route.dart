@@ -43,7 +43,7 @@ class Routes {
     _cusPage(NamedRoutes.login_page, () => const LoginPage()),
     _cusPage(NamedRoutes.signup_page, () => const SignupPage()),
     _cusPage(NamedRoutes.intro_page, () => const IntroducePage()),
-    _cusPage(NamedRoutes.p4, () => const Scaffold(body: Intro_4_page()))
+    _cusPage(NamedRoutes.p4, () => const Scaffold(body: Intro_4_page())),
   ];
 
   static GetPage _cusPage(String route, Widget Function() page, {Map<String, dynamic>? arg}) {

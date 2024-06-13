@@ -109,5 +109,36 @@
     "l2": "default",
     "l3": "high",
     "l4": "important"
+  },
+
+  "profile": {
+    "1": "Profile",
+    "2": "Task left",
+    "3": "Task done",
+    "4": "Settings",
+    "5": "App Settings",
+    "6": "Account",
+    "7":"Change account name",
+    "8": "Change account password",
+    "9": "Change account image",
+    "10": "Uptodo",
+    "11": "About US",
+    "12":"FAQ",
+    "13": "Help&Feedback",
+    "14": "Support US",
+    "15": "Log out",
+    "16": "Enter old password",
+    "17": "Enter new password",
+    "18": "Take picture",
+    "19": "Import from gallery",
+    "20": "Import from Google Drive"
+  },
+
+  "setting": {
+    "1": "Settings",
+    "2":"Change app color",
+    "3": "Change app typography",
+    "4": "Change app language"
+
   }
 }

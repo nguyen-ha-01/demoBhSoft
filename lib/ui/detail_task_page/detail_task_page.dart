@@ -95,6 +95,7 @@ class _DetailTaskPageState extends State<DetailTaskPage> {
   Widget finishTask() => GestureDetector(
         onTap: () {
           _controller.saveChange();
+          Get.back();
         },
         child: Container(
           width: double.infinity,
