@@ -169,6 +169,15 @@ class $AssetsIconGen {
   /// File path: assets/icon/ic_register_arr_back.svg
   String get icRegisterArrBack => 'assets/icon/ic_register_arr_back.svg';
 
+  /// File path: assets/icon/ic_set_color.svg
+  String get icSetColor => 'assets/icon/ic_set_color.svg';
+
+  /// File path: assets/icon/ic_set_lang.svg
+  String get icSetLang => 'assets/icon/ic_set_lang.svg';
+
+  /// File path: assets/icon/ic_set_typo.svg
+  String get icSetTypo => 'assets/icon/ic_set_typo.svg';
+
   /// File path: assets/icon/icon_cate_movie.svg
   String get iconCateMovie => 'assets/icon/icon_cate_movie.svg';
 
@@ -228,6 +237,9 @@ class $AssetsIconGen {
         icPSupport,
         icPickerDotdot,
         icRegisterArrBack,
+        icSetColor,
+        icSetLang,
+        icSetTypo,
         iconCateMovie,
         iconHomeSheetSend,
         img

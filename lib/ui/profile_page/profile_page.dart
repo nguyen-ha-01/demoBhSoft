@@ -1,12 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:tiademo/common/extend/p1.dart';
 import 'package:tiademo/core/app_color.dart';
 import 'package:tiademo/core/app_textstyle.dart';
 import 'package:tiademo/gen/assets.gen.dart';
 import 'package:tiademo/models/category.dart';
 import 'package:tiademo/models/task.dart';
+import 'package:tiademo/routes/named_route.dart';
 import 'package:tiademo/ui/profile_page/widgets/change_account_image.dart';
 import 'package:tiademo/ui/profile_page/widgets/change_account_name.dart';
 import 'package:tiademo/ui/profile_page/widgets/change_password.dart';
@@ -73,7 +76,12 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(
             height: 16,
           ),
-          ItemBtn(iconR: Assets.icon.icPSetting, title: tr('profile.5'), onTab: () {}),
+          ItemBtn(
+              iconR: Assets.icon.icPSetting,
+              title: tr('profile.5'),
+              onTab: () async {
+                Get.toNamed(NamedRoutes.setting_page);
+              }),
           const SizedBox(
             height: 26,
           ),

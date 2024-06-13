@@ -11,6 +11,7 @@ import 'package:tiademo/ui/login_signup_page/intro_page/introduce_page.dart';
 import 'package:tiademo/ui/login_signup_page/login_page/login_page.dart';
 import 'package:tiademo/ui/login_signup_page/signup_page/signup_page.dart';
 import 'package:tiademo/ui/new_category_page/new_category_page.dart';
+import 'package:tiademo/ui/setting_page/setting_page.dart';
 import 'package:tiademo/ui/splash_page/splash_page.dart';
 
 class Routes {
@@ -44,6 +45,7 @@ class Routes {
     _cusPage(NamedRoutes.signup_page, () => const SignupPage()),
     _cusPage(NamedRoutes.intro_page, () => const IntroducePage()),
     _cusPage(NamedRoutes.p4, () => const Scaffold(body: Intro_4_page())),
+    _cusPage(NamedRoutes.setting_page, () => const SettingPage())
   ];
 
   static GetPage _cusPage(String route, Widget Function() page, {Map<String, dynamic>? arg}) {
