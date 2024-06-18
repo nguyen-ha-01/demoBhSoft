@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 import 'package:tiademo/common/widget/category_selector_item.dart';
@@ -12,34 +11,6 @@ import 'package:tiademo/ui/new_category_page/new_category_page.dart';
 
 Widget categorySelectedPage(
     BuildContext ctx, List<Category> categories, Function(Category) onSelectCategory, Function() onSave) {
-  Widget categorySelectItem(Category category) => Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          GestureDetector(
-            onTap: onSelectCategory(category),
-            child: Container(
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(color: Color(category.colorId), borderRadius: BorderRadius.circular(8)),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SvgPicture.asset(
-                  category.iconId,
-                  width: 32,
-                  height: 32,
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-          ),
-          Text(
-            category.name,
-            style: AppTextStyle.type14,
-          )
-        ],
-      );
   AddTaskController controller = Get.find<AddTaskController>();
   return Dialog(
     child: Container(
@@ -74,16 +45,17 @@ Widget categorySelectedPage(
                     var data = await showDialog(context: context, builder: (c) => NewCategoryPage());
                     if (data is Category) {
                       controller.addCategory(data);
-                      print("have data back");
+                      print("have data back===============================from add category --categorySelectPage");
                     }
                   });
                 }
-                return CategorySelectorItem(
-                  category: controller.categories[index],
-                  onSelected: (e) {
-                    onSelectCategory(e);
-                  },
-                );
+                return Obx(() => CategorySelectorItem(
+                      category: controller.categories[index],
+                      onSelected: (e) {
+                        onSelectCategory(e);
+                        print("--------===select category with name${e.name}--------------from categorySelectPage");
+                      },
+                    ));
               })),
           Padding(
             padding: const EdgeInsets.only(top: 12, left: 14, right: 14),
@@ -92,7 +64,7 @@ Widget categorySelectedPage(
                 Expanded(
                   child: TextButton(
                       onPressed: () {
-                        Navigator.pop(ctx, "asv");
+                        Navigator.pop(ctx);
                       },
                       child: SizedBox(
                           height: 48,
@@ -106,6 +78,10 @@ Widget categorySelectedPage(
                   child: ElevatedButton(
                       onPressed: () {
                         onSave();
+                        // controller.selectCategory(p)
+                        //  print("save category pick with ${controller.category.value.name}-------------------------------category-select-page");
+
+                        //todo:notifi reload data after update data
                         Navigator.pop(ctx);
                       },
                       child: SizedBox(

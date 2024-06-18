@@ -14,8 +14,10 @@ import 'package:tiademo/core/app_color.dart';
 import 'package:tiademo/core/app_textstyle.dart';
 import 'package:tiademo/di.dart';
 import 'package:tiademo/gen/assets.gen.dart';
+import 'package:tiademo/service/async_data_service.dart';
 import 'package:tiademo/states/add_task_controller.dart';
 import 'package:tiademo/states/cubit/nav.dart';
+import 'package:tiademo/states/task_provider.dart';
 import 'package:tiademo/ui/calender_page/calender_page.dart';
 import 'package:tiademo/ui/focus_page/focus_page.dart';
 import 'package:tiademo/ui/index_page/index_page.dart';
@@ -29,7 +31,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final AddTaskController controller = Get.put(AddTaskController());
+  final AddTaskController controller = Get.put(AddTaskController(getIt<TaskProvider>().repo));
+  final syncDataOnNet = SyncData();
+  TaskProvider provider = getIt<TaskProvider>();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    syncDataOnNet.dispose();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    syncDataOnNet.sync(() async {
+      bool isSynced = await provider.syncData();
+      if (isSynced) {
+        provider.loadCategories();
+        provider.loadTasks();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -55,6 +80,8 @@ class _HomePageState extends State<HomePage> {
                 var isAdded = await Get.bottomSheet(bottomSheetModeling());
                 if (isAdded == true) {
                   //todo: reload data
+                  print("reload data-----------------------------------------------");
+                  provider.loadTasks();
                 }
               },
               child: SvgPicture.asset(Assets.icon.icHomeNav5)),
@@ -144,7 +171,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.pop(context);
                 },
                 handleOk: (h, m, ap) {
-                  TimeOfDay t = TimeOfDay(hour: (ap == 'am') ? h : h + 12, minute: m);
+                  TimeOfDay t = TimeOfDay(hour: (ap == 'Am') ? h : h + 12, minute: m);
                   Navigator.pop(context, t);
                 },
               );
@@ -172,11 +199,12 @@ class _HomePageState extends State<HomePage> {
   Widget categoryPick() => GestureDetector(
         onTap: () async {
           //todo: add tag in sheet
+          var loadCategories = await controller.getCategories();
           await showDialog(
               context: context,
               barrierDismissible: false,
-              builder: (c) => Obx(() => categorySelectedPage(context, controller.getCategories(),
-                  (p) => controller.selectCategory(p), () => {controller.saveCategory()})));
+              builder: (c) => categorySelectedPage(
+                  context, loadCategories, (p) => controller.selectCategory(p), () => {controller.saveCategory()}));
         },
         child: SizedBox(
           width: 40,
@@ -219,7 +247,7 @@ class _HomePageState extends State<HomePage> {
           //todo: icon sheet Send
           var isAdded = await controller.addTask();
           if (isAdded) {
-            Navigator.pop(context, true);
+            Get.back(result: true);
           }
         },
         child: SizedBox(

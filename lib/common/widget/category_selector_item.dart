@@ -22,7 +22,9 @@ class CategorySelectorItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           GestureDetector(
-            onTap: onSelected(category),
+            onTap: () {
+              onSelected(category);
+            },
             child: Container(
               width: 50,
               height: 50,

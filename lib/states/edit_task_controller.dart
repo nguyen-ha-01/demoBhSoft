@@ -3,11 +3,13 @@ import 'package:get/get.dart';
 import 'package:tiademo/common/extend/p1.dart';
 import 'package:tiademo/models/category.dart';
 import 'package:tiademo/models/task.dart';
+import 'package:tiademo/states/task_provider.dart';
 
 class EditTaskController extends GetxController {
   final Task rootTask;
   final Category rootCategory;
-  EditTaskController({required this.rootTask, required this.rootCategory}) {
+  final TaskProvider controller;
+  EditTaskController(this.controller, {required this.rootTask, required this.rootCategory}) {
     tempTask.value = rootTask.copy();
     tempCategory.value = rootCategory.copy();
   }
@@ -16,34 +18,39 @@ class EditTaskController extends GetxController {
   var tempCategory = getCategory().obs;
   var _tempCategory = getCategory().obs;
 
-  void editTaskTitle(String label) {
+  Future<void> editTaskTitle(String label) async {
     tempTask.value.label = label;
     tempTask.refresh();
+    saveChange();
   }
 
-  void editTaskDescription(String description) {
+  Future<void> editTaskDescription(String description) async {
     tempTask.value.description = description;
     tempTask.refresh();
+    saveChange();
   }
 
-  void editTaskTime(String newTime) {
+  Future<void> editTaskTime(String newTime) async {
     tempTask.value.time = newTime;
     tempTask.refresh();
+    saveChange();
   }
 
-  void editDateTime(DateTime date, TimeOfDay time) {
+  Future<void> editDateTime(DateTime date, TimeOfDay time) async {
     DateTime temp = DateTime(date.year, date.month, date.day, time.hour, time.minute);
-    tempTask.value.time = temp.toIso8601String();
-    tempTask.refresh();
+    editTaskTime(temp.toIso8601String());
   }
 
   void editCategoryData() {
     tempCategory.value = _tempCategory.value;
     tempCategory.refresh();
+    print("-----------------category change with ${_tempCategory.value.toMap()}---------------");
+    // saveChange();
   }
 
   void selectCategory(Category category) {
     _tempCategory.value = category;
+    print("category select dialog with ${category.toMap()}---------------editTaskController");
     _tempCategory.refresh();
   }
 
@@ -52,8 +59,11 @@ class EditTaskController extends GetxController {
     tempTask.refresh();
   }
 
-  void saveChange() {
-    print("edit task to ");
+  Future<void> saveChange() async {
+    print(
+        "------------------------------${tempTask.value.toMap()}save change to tedit controller ---------------------------------editTaskController ");
+    tempTask.value = tempTask.value.copyWith(category: tempCategory.value);
+    controller.repo.updateTask(tempTask.value);
     print(tempTask.toString());
   }
 
@@ -63,8 +73,9 @@ class EditTaskController extends GetxController {
   Category getCategoryData() => tempCategory.value;
   int getPriority() => tempTask.value.priority;
 
-  void deleteTask() {
+  Future<void> deleteTask() async {
     // todo: remove task with repository then
+    controller.repo.deleteTask(tempTask.value);
   }
 
   void rollbackData() {
@@ -74,5 +85,6 @@ class EditTaskController extends GetxController {
     tempCategory.refresh();
     tempTask.refresh();
     _tempCategory.refresh();
+    saveChange();
   }
 }

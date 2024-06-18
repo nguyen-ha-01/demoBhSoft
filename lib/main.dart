@@ -41,9 +41,9 @@ class App extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<UserProvider>(create: (c) => getIt<UserProvider>()..init()),
         ChangeNotifierProxyProvider<UserProvider, TaskProvider>(
-            create: (c) => TaskProvider()..init(),
+            create: (c) => getIt<TaskProvider>()..init(),
             update: (context, user, task) {
-              return task!..update(user.authState);
+              return getIt<TaskProvider>()..update(user.authState);
             })
       ],
       child: GetMaterialApp(

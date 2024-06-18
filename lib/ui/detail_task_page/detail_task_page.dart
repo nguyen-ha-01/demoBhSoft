@@ -12,11 +12,13 @@ import 'package:tiademo/common/widget/pages/custom_hour_picker.dart';
 import 'package:tiademo/common/widget/pages/priority_select_page.dart';
 import 'package:tiademo/core/app_color.dart';
 import 'package:tiademo/core/app_textstyle.dart';
+import 'package:tiademo/di.dart';
 import 'package:tiademo/gen/assets.gen.dart';
 import 'package:tiademo/models/category.dart';
 import 'package:tiademo/models/task.dart';
 import 'package:tiademo/states/add_task_controller.dart';
 import 'package:tiademo/states/edit_task_controller.dart';
+import 'package:tiademo/states/task_provider.dart';
 import 'package:tiademo/ui/detail_task_page/widgets/delete_task.dart';
 import 'package:tiademo/ui/detail_task_page/widgets/edit_task_title.dart';
 import 'package:tiademo/ui/home_page/home_page.dart';
@@ -36,11 +38,12 @@ class _DetailTaskPageState extends State<DetailTaskPage> {
 
   late EditTaskController _controller;
   final AddTaskController _addTaskController = Get.find();
+  final TaskProvider _provider = getIt<TaskProvider>();
 
   @override
   void initState() {
     // TODO: implement initState
-    _controller = Get.put(EditTaskController(rootTask: widget.task, rootCategory: widget.category));
+    _controller = Get.put(EditTaskController(_provider, rootTask: widget.task, rootCategory: widget.category));
     super.initState();
   }
 
@@ -93,8 +96,9 @@ class _DetailTaskPageState extends State<DetailTaskPage> {
   }
 
   Widget finishTask() => GestureDetector(
-        onTap: () {
-          _controller.saveChange();
+        onTap: () async {
+          await _controller.saveChange();
+          Future.microtask(() => _provider.loadTasks());
           Get.back();
         },
         child: Container(
@@ -146,14 +150,15 @@ class _DetailTaskPageState extends State<DetailTaskPage> {
                     Navigator.pop(context);
                   },
                   handleOk: (h, m, ap) {
-                    TimeOfDay t = TimeOfDay(hour: (ap == 'am') ? h : h + 12, minute: m);
+                    TimeOfDay t = TimeOfDay(hour: (ap == 'Am') ? h : h + 12, minute: m);
                     Navigator.pop(context, t);
                   },
                 );
                 var time = await showDialog(context: context, builder: (c) => hourPicker);
 
                 if (time != null && time is TimeOfDay) {
-                  print("time picked is ${time.toString()}");
+                  print(
+                      "============================time picked is ${time.toString()}==================================detailTaskPage");
                   _controller.editDateTime(date, time);
                 }
               }
@@ -164,7 +169,7 @@ class _DetailTaskPageState extends State<DetailTaskPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Align(
                 child: Text(
-                  time,
+                  _controller.tempTask.value.time.toDisplayDate(),
                   style: AppTextStyle.type16,
                 ),
               ),
@@ -172,6 +177,13 @@ class _DetailTaskPageState extends State<DetailTaskPage> {
           )
         ],
       );
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller.dispose();
+    super.dispose();
+  }
 
   Widget dataTask() => Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -308,7 +320,7 @@ class _DetailTaskPageState extends State<DetailTaskPage> {
                     const SizedBox(
                       width: 16,
                     ),
-                    SvgPicture.asset(category.iconId),
+                    Obx(() => SvgPicture.asset(_controller.tempCategory.value.iconId)),
                     const SizedBox(
                       width: 10,
                     ),
@@ -418,7 +430,8 @@ class _DetailTaskPageState extends State<DetailTaskPage> {
                     title: _controller.getTaskLabel(),
                   ));
           if (willDelete == true) {
-            _controller.deleteTask();
+            await _controller.deleteTask();
+            await _provider.loadTasks();
             Get.offAll(() => const HomePage());
           }
         },

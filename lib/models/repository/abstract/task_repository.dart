@@ -3,7 +3,7 @@ import 'package:tiademo/models/task.dart';
 
 abstract class TaskRepository {
   Future<bool> addTask(Task task);
-  Future<bool> updateTask(String id, Task task);
+  Future<bool> updateTask(Task task);
   Future<bool> deleteTask(Task task);
   Future<List<Task>> getTasks();
   Future<List<Category>> getCategories();

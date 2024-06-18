@@ -63,6 +63,9 @@ dependencies:
   cloud_firestore: ^4.15.8
   shared_preferences: ^2.2.3
   numberpicker: ^2.1.2
+  sqflite: ^2.3.2
+  connectivity_plus: ^6.0.3
+  uuid: ^4.4.0
 
 dev_dependencies:
   flutter_test:

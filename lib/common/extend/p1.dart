@@ -13,7 +13,7 @@ Task getTask() => Task(
       description: 'Milk, Bread, Eggs, Cheese',
       time: '2024-06-07T12:30:00.000',
       state: false,
-      categoryId: '1',
+      category: getCategory(),
       priority: 2,
     );
 
@@ -23,7 +23,7 @@ Task getFinishedTask() => Task(
       description: 'Milk, Bread, Eggs, Cheese',
       time: '2024-06-07T12:30:00.000',
       state: true,
-      categoryId: '1',
+      category: getCategory(),
       priority: 2,
     );
 

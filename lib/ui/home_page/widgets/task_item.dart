@@ -44,7 +44,7 @@ class _TaskItemState extends State<TaskItem> with SingleTickerProviderStateMixin
               Radio<bool>(
                 value: !widget.task.state,
                 groupValue: widget.task.state,
-                onChanged: (value) {
+                onChanged: (value) async {
                   widget.onRadio(value);
                 },
               ),

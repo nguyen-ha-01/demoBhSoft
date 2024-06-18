@@ -41,12 +41,14 @@ class FirebaseConfig {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-      apiKey: "AIzaSyAEpJXhYMe5TWQkw4ANqqobcfcG8QJ9x5E",
-      authDomain: "tiademo-7c4fb.firebaseapp.com",
-      projectId: "tiademo-7c4fb",
-      storageBucket: "tiademo-7c4fb.appspot.com",
-      messagingSenderId: "138702265774",
-      appId: "1:138702265774:web:da5a555e4fbf91561c7c3f",
-      androidClientId: "138702265774-mhd56b0epb447p8qbibk1cb20vm6tg8s.apps.googleusercontent.com",
-      measurementId: "G-RPZJJL6W11");
+    apiKey: "AIzaSyAEpJXhYMe5TWQkw4ANqqobcfcG8QJ9x5E",
+    authDomain: "tiademo-7c4fb.firebaseapp.com",
+    projectId: "tiademo-7c4fb",
+    storageBucket: "tiademo-7c4fb.appspot.com",
+    messagingSenderId: "138702265774",
+    appId: "1:138702265774:web:da5a555e4fbf91561c7c3f",
+    androidClientId: "138702265774-mhd56b0epb447p8qbibk1cb20vm6tg8s.apps.googleusercontent.com",
+    measurementId: "G-RPZJJL6W11",
+    databaseURL: "https://tiademo-7c4fb.firebaseio.com",
+  );
 }

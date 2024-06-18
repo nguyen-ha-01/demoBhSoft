@@ -23,7 +23,7 @@ class UserProvider extends ChangeNotifier {
     if (loggedUser != null) {
       authState = ApiResponse.completed(loggedUser);
       notifyListeners();
-      print(authState.status.toString() + "loggeduser_---------------------------------init--userProvider");
+      print("${authState.status}loggeduser_---------------------------------init--userProvider");
       return true;
     }
     return false;
