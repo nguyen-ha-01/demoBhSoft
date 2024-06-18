@@ -9,6 +9,16 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsAnimGen {
+  const $AssetsAnimGen();
+
+  /// File path: assets/anim/ani_loading.json
+  String get aniLoading => 'assets/anim/ani_loading.json';
+
+  /// List of all assets
+  List<String> get values => [aniLoading];
+}
+
 class $AssetsI18Gen {
   const $AssetsI18Gen();
 
@@ -73,6 +83,18 @@ class $AssetsIconGen {
   /// File path: assets/icon/ic_commons_arrow.svg
   String get icCommonsArrow => 'assets/icon/ic_commons_arrow.svg';
 
+  /// File path: assets/icon/ic_detail_edit.svg
+  String get icDetailEdit => 'assets/icon/ic_detail_edit.svg';
+
+  /// File path: assets/icon/ic_detail_exit.svg
+  String get icDetailExit => 'assets/icon/ic_detail_exit.svg';
+
+  /// File path: assets/icon/ic_detail_rollback.svg
+  String get icDetailRollback => 'assets/icon/ic_detail_rollback.svg';
+
+  /// File path: assets/icon/ic_detail_sub.svg
+  String get icDetailSub => 'assets/icon/ic_detail_sub.svg';
+
   /// File path: assets/icon/ic_home_1.svg
   String get icHome1 => 'assets/icon/ic_home_1.svg';
 
@@ -124,11 +146,47 @@ class $AssetsIconGen {
   /// File path: assets/icon/ic_intro_3.svg
   String get icIntro3 => 'assets/icon/ic_intro_3.svg';
 
+  /// File path: assets/icon/ic_p_about.svg
+  String get icPAbout => 'assets/icon/ic_p_about.svg';
+
+  /// File path: assets/icon/ic_p_arrow.svg
+  String get icPArrow => 'assets/icon/ic_p_arrow.svg';
+
+  /// File path: assets/icon/ic_p_change_image.svg
+  String get icPChangeImage => 'assets/icon/ic_p_change_image.svg';
+
+  /// File path: assets/icon/ic_p_fag.svg
+  String get icPFag => 'assets/icon/ic_p_fag.svg';
+
+  /// File path: assets/icon/ic_p_help.svg
+  String get icPHelp => 'assets/icon/ic_p_help.svg';
+
+  /// File path: assets/icon/ic_p_key.svg
+  String get icPKey => 'assets/icon/ic_p_key.svg';
+
+  /// File path: assets/icon/ic_p_logout.svg
+  String get icPLogout => 'assets/icon/ic_p_logout.svg';
+
+  /// File path: assets/icon/ic_p_setting.svg
+  String get icPSetting => 'assets/icon/ic_p_setting.svg';
+
+  /// File path: assets/icon/ic_p_support.svg
+  String get icPSupport => 'assets/icon/ic_p_support.svg';
+
   /// File path: assets/icon/ic_picker_dotdot.svg
   String get icPickerDotdot => 'assets/icon/ic_picker_dotdot.svg';
 
   /// File path: assets/icon/ic_register_arr_back.svg
   String get icRegisterArrBack => 'assets/icon/ic_register_arr_back.svg';
+
+  /// File path: assets/icon/ic_set_color.svg
+  String get icSetColor => 'assets/icon/ic_set_color.svg';
+
+  /// File path: assets/icon/ic_set_lang.svg
+  String get icSetLang => 'assets/icon/ic_set_lang.svg';
+
+  /// File path: assets/icon/ic_set_typo.svg
+  String get icSetTypo => 'assets/icon/ic_set_typo.svg';
 
   /// File path: assets/icon/icon_cate_movie.svg
   String get iconCateMovie => 'assets/icon/icon_cate_movie.svg';
@@ -157,6 +215,10 @@ class $AssetsIconGen {
         icCommonGoogle,
         icCommonTrash,
         icCommonsArrow,
+        icDetailEdit,
+        icDetailExit,
+        icDetailRollback,
+        icDetailSub,
         icHome1,
         icHomeNav1,
         icHomeNav1Se,
@@ -174,8 +236,20 @@ class $AssetsIconGen {
         icIntro1,
         icIntro2,
         icIntro3,
+        icPAbout,
+        icPArrow,
+        icPChangeImage,
+        icPFag,
+        icPHelp,
+        icPKey,
+        icPLogout,
+        icPSetting,
+        icPSupport,
         icPickerDotdot,
         icRegisterArrBack,
+        icSetColor,
+        icSetLang,
+        icSetTypo,
         iconCateMovie,
         iconHomeSheetSend,
         img
@@ -185,6 +259,7 @@ class $AssetsIconGen {
 class Assets {
   Assets._();
 
+  static const $AssetsAnimGen anim = $AssetsAnimGen();
   static const $AssetsI18Gen i18 = $AssetsI18Gen();
   static const $AssetsIconGen icon = $AssetsIconGen();
 }

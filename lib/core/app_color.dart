@@ -15,5 +15,6 @@ class AppColor {
   static const Color flagDismiss = Color(0xff272727);
   static const Color border = Color(0xff979797);
   static const Color date = Color(0xffff4949);
+  static const Color btnColor = Color(0xFF1C1C1C);
   static const Color green = Color(0xff80FFD1);
 }

@@ -139,19 +139,6 @@ class _SignupPageState extends State<SignupPage> {
               GestureDetector(
                 onTap: () async {
                   p.register(_username.text, _password.text);
-                  // if (_formKey.currentState!.validate()) {
-                  //   showModalBottomSheet(
-                  //       context: context,
-                  //       builder: (c) {
-                  //         return Column(
-                  //           children: [
-                  //             Text(_username.text),
-                  //             Text(_confirmPass.text),
-                  //             Text(_password.text),
-                  //           ],
-                  //         );
-                  //       });
-                  // }
                 },
                 child: Container(
                   height: 48,
@@ -249,40 +236,40 @@ class _SignupPageState extends State<SignupPage> {
           ),
         ),
       );
+}
 
-  Widget inputField(TextEditingController editingController, String title, String hint,
-      String? Function(String?)? validate, Function() onchange,
-      {TextInputType? type, bool? isPassword, TextInputAction? action}) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: AppTextStyle.type16,
+Widget inputField(TextEditingController editingController, String title, String hint,
+    String? Function(String?)? validate, Function() onchange,
+    {TextInputType? type, bool? isPassword, TextInputAction? action}) {
+  return Column(
+    mainAxisSize: MainAxisSize.min,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        title,
+        style: AppTextStyle.type16,
+      ),
+      const SizedBox(
+        height: 8,
+      ),
+      TextInputItem(
+        action: action ?? TextInputAction.next,
+        keyboard: type,
+        validate: validate,
+        hint: hint,
+        onChange: (v) {
+          onchange();
+          if (kDebugMode) {
+            print("do on change");
+          }
+        },
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: AppColor.border),
         ),
-        const SizedBox(
-          height: 8,
-        ),
-        TextInputItem(
-          action: action ?? TextInputAction.next,
-          keyboard: type,
-          validate: validate,
-          hint: hint,
-          onChange: (v) {
-            onchange();
-            if (kDebugMode) {
-              print("do on change");
-            }
-          },
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: AppColor.border),
-          ),
-          controller: editingController,
-          isObscured: isPassword,
-        )
-      ],
-    );
-  }
+        controller: editingController,
+        isObscured: isPassword,
+      )
+    ],
+  );
 }

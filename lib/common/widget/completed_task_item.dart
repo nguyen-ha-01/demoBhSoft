@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:tiademo/common/extend/p1.dart';
 import 'package:tiademo/core/app_color.dart';
 import 'package:tiademo/core/app_textstyle.dart';
 import 'package:tiademo/gen/assets.gen.dart';
 import 'package:tiademo/models/category.dart';
 import 'package:tiademo/models/task.dart';
+import 'package:tiademo/routes/named_route.dart';
 
 class CompletedTaskItem extends StatefulWidget {
   final Task task;
@@ -30,7 +34,11 @@ class _CompletedTaskItemState extends State<CompletedTaskItem> {
       opacity: (widget.task.state != false) ? 1 : 0,
       duration: const Duration(milliseconds: 250),
       child: GestureDetector(
-        onTap: widget.onTap(widget.task, widget.category),
+        onTap: () {
+          Map<String, dynamic> args = {'task': widget.task, 'category': widget.category};
+          Get.toNamed(NamedRoutes.detail_task_page, arguments: args);
+          print("start detail map${args.toString()}");
+        },
         onHorizontalDragUpdate: (detail) {
           setState(() {
             _dragPosition += detail.delta.dx;
@@ -70,6 +78,7 @@ class _CompletedTaskItemState extends State<CompletedTaskItem> {
                       Text(
                         widget.task.label,
                         style: AppTextStyle.type16,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(
                         height: 6,
@@ -79,7 +88,7 @@ class _CompletedTaskItemState extends State<CompletedTaskItem> {
                         children: [
                           Expanded(
                             child: Text(
-                              widget.task.time,
+                              widget.task.time.toDisplayDate(),
                               style: AppTextStyle.type14_low,
                             ),
                           ),

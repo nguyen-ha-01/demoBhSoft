@@ -22,7 +22,9 @@ class CategorySelectorItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           GestureDetector(
-            onTap: onSelected(category),
+            onTap: () {
+              onSelected(category);
+            },
             child: Container(
               width: 50,
               height: 50,
@@ -38,9 +40,12 @@ class CategorySelectorItem extends StatelessWidget {
               ),
             ),
           ),
-          Text(
-            category.name,
-            style: AppTextStyle.type14,
+          Flexible(
+            child: Text(
+              category.name,
+              style: AppTextStyle.type14,
+              overflow: TextOverflow.ellipsis,
+            ),
           )
         ],
       ),

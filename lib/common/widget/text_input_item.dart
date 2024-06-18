@@ -5,7 +5,7 @@ import 'package:tiademo/core/app_textstyle.dart';
 class TextInputItem extends StatelessWidget {
   final bool? isObscured;
 
-  TextInputItem({
+  const TextInputItem({
     super.key,
     required this.hint,
     this.action,
@@ -18,6 +18,7 @@ class TextInputItem extends StatelessWidget {
     this.prefix,
     this.isObscured,
   });
+
   final TextEditingController controller;
   final TextInputAction? action;
   final TextInputType? keyboard;
@@ -64,7 +65,7 @@ class TextInputItem extends StatelessWidget {
 }
 
 class TextInputItem2 extends StatelessWidget {
-  TextInputItem2(
+  const TextInputItem2(
       {super.key,
       required this.hint,
       this.action,
@@ -75,6 +76,7 @@ class TextInputItem2 extends StatelessWidget {
       required this.controller,
       this.prefix,
       required this.width});
+
   final double width;
   final TextEditingController controller;
   final TextInputAction? action;

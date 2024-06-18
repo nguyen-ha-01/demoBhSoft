@@ -39,6 +39,24 @@ class Category {
       iconId: map['iconId'],
     );
   }
+  Category copyWithId(String docId) => Category(id: docId, name: name, colorId: colorId, iconId: iconId);
+  Category copyWith({
+    String? id,
+    String? name,
+    String? description,
+    int? colorId,
+    String? iconId,
+  }) {
+    return Category(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      colorId: colorId ?? this.colorId,
+      iconId: iconId ?? this.iconId,
+    );
+  }
+
+  Category copy() => Category(id: id, name: name, colorId: colorId, iconId: iconId);
 
   // Method to display category details
   @override
